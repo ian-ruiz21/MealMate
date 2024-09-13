@@ -6,5 +6,10 @@
 }
 
 .NavBar span {
-  color: rgb(108, 9, 87);
+  color: #3d5a80;
+}
+
+.NavBar a {
+  text-decoration: none;
+  color: #3d5a80;
 }

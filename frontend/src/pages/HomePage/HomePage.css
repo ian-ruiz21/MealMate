@@ -1,0 +1,136 @@
+/* HomePage.css */
+
+body {
+    font-family: 'Be Vietnam', sans-serif; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #fdf6e3; 
+    color: #3d5a80; 
+  }
+  
+  .homepage {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    background-color: #3d5a80;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 50px;
+  }
+  
+  .hero-content {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .hero-content h1 {
+    font-size: 3em;
+    color: #909c98;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #909c98;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #fdf6e3;
+    color: #3d5a80;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .cta-button:hover {
+    background-color: #6b705c;
+  }
+  
+  .features {
+    margin: 40px 0;
+  }
+  
+  .features h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #3d5a80;
+  }
+  
+  .features-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .feature {
+    background-color: #3d5a80;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 300px;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .feature img {
+    width: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .feature h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #909c98;
+  }
+  
+  .feature p {
+    font-size: 1em;
+    color: #909c98;
+  }
+  
+  .cta-section {
+    padding: 40px;
+    background-color: #3d5a80;
+    margin-top: 50px;
+    border-radius: 10px;
+  }
+  
+  .cta-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #909c98;
+  }
+  
+  .cta-section p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #909c98;
+  }
+  
+  .homepage-footer {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #3d5a80;
+    color: #909c98;
+    border-radius: 10px;
+  }
+  
+  .homepage-footer p {
+    margin: 0;
+    font-size: 1em;
+  }  
