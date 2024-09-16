@@ -5,6 +5,7 @@ import './App.css';
 import NavBar from '../../components/NavBar/NavBar';
 import HomePage from '../HomePage/HomePage';
 import RecipeList from '../RecipeList/RecipeList';
+import RecipeDetails from '../RecipeDetails/RecipeDetails';
 import NewPostPage from '../NewPostPage/NewPostPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
@@ -31,6 +32,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/recipes" element={<RecipeList recipes={recipes} />} />
+            <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
             <Route path="/posts/new" element={<NewPostPage />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
