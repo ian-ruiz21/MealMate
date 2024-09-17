@@ -16,7 +16,7 @@ export default function NavBar({ user, setUser }) {
         <>
           <Link to="/recipes">Recipe List</Link>
           &nbsp; | &nbsp;
-          <Link to="/posts/new">New Recipe</Link>
+          <Link to="/recipes/new">New Recipe</Link>
           &nbsp; | &nbsp;
           <Link to="" onClick={handleLogOut}>
             Log Out

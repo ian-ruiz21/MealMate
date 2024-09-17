@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as recipeService from "../../services/recipeService";
 
-const NewPostPage = (props) => {
+const NewRecipePage = (props) => {
   const { recipeId } = useParams();
 
   useEffect(() => {
@@ -139,4 +139,4 @@ const NewPostPage = (props) => {
   );
 };
 
-export default NewPostPage;
+export default NewRecipePage;

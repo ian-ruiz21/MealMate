@@ -10,7 +10,7 @@ router.use(verifyToken);
 // GET /api/recipes INDEX FUNCTIONALITY
 router.get("/", async (req, res) => {
   try {
-    const recipes = await Recipe.find()
+    const recipes = await Recipe.find({ author: req.user._id })
       .populate("author")
       .sort({ createdAt: "desc" });
     res.status(200).json(recipes);
@@ -35,12 +35,13 @@ router.post("/", async (req, res) => {
 // GET /api/recipes/:id SHOW FUNCTIONALITY
 router.get("/:recipeId", async (req, res) => {
   try {
-    const recipe = await Recipe.findById(req.params.recipeId).populate(
-      "author"
-    );
+    const recipe = await Recipe.findById(req.params.recipeId).populate([
+      "author",
+      "comments.author",
+    ]);
     res.status(200).json(recipe);
   } catch (err) {
-    res.status(400).json({ message: err });
+    res.status(400).json(err);
   }
 });
 

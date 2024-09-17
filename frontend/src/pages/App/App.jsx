@@ -1,20 +1,28 @@
-import { useState, createContext, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { getUser } from '../../services/authService';
-import './App.css';
-import NavBar from '../../components/NavBar/NavBar';
-import HomePage from '../HomePage/HomePage';
-import RecipeList from '../RecipeList/RecipeList';
-import RecipeDetails from '../RecipeDetails/RecipeDetails';
-import NewPostPage from '../NewPostPage/NewPostPage';
-import SignUpPage from '../SignUpPage/SignUpPage';
-import LogInPage from '../LogInPage/LogInPage';
-import * as recipeService from '../../services/recipeService';
+import { useState, createContext, useEffect } from "react";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { getUser } from "../../services/authService";
+import "./App.css";
+import NavBar from "../../components/NavBar/NavBar";
+import HomePage from "../HomePage/HomePage";
+import RecipeList from "../RecipeList/RecipeList";
+import RecipeDetails from "../RecipeDetails/RecipeDetails";
+import NewRecipePage from "../NewRecipePage/NewRecipePage";
+import SignUpPage from "../SignUpPage/SignUpPage";
+import LogInPage from "../LogInPage/LogInPage";
+import * as recipeService from "../../services/recipeService";
 
 function App() {
   const [user, setUser] = useState(getUser());
 
   const [recipes, setRecipes] = useState([]);
+
+  const navigate = useNavigate();
+
+  const handleAddRecipe = async (recipeFormData) => {
+    const newRecipe = await recipeService.create(recipeFormData);
+    setRecipes([newRecipe, ...recipes]);
+    navigate("/recipes");
+  };
 
   useEffect(() => {
     const fetchAllRecipes = async () => {
@@ -33,7 +41,10 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/recipes" element={<RecipeList recipes={recipes} />} />
             <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
-            <Route path="/posts/new" element={<NewPostPage />} />
+            <Route
+              path="/recipes/new"
+              element={<NewRecipePage handleAddRecipe={handleAddRecipe} />}
+            />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         ) : (

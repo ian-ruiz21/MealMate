@@ -1,21 +1,17 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-const commentSchema = new Schema(
+const commentSchema = new mongoose.Schema(
   {
     text: {
       type: String,
       required: true,
     },
-    author: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: "User", }
   },
   { timestamps: true }
 );
 
-const RecipeSchema = new Schema({
+const RecipeSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -39,7 +35,7 @@ const RecipeSchema = new Schema({
   photo: {
     type: String,
   },
-  author: { type: Schema.Types.ObjectId, ref: "User" },
+  author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   comments: [commentSchema],
 },
 { timestamps: true }

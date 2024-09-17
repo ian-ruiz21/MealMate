@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as recipeService from "../../services/recipeService";
 
+
 const RecipeDetails = () => {
   const { recipeId } = useParams();
 
@@ -14,7 +15,6 @@ const RecipeDetails = () => {
     };
     fetchRecipe();
   }, [recipeId]);
-
 
   if (!recipe) return <main>Loading...</main>;
   return (
@@ -50,6 +50,23 @@ const RecipeDetails = () => {
           <img src={recipe.photo} alt={`${recipe.title} photo`} />
         </section>
       )}
+      <section>
+        <h2>Comments</h2>
+
+        {!recipe.comments.length && <p>There are no comments.</p>}
+
+        {recipe.comments.map((comment) => (
+          <article key={comment._id}>
+            <header>
+              <p>
+                {  } posted on &nbsp;
+                {new Date(comment.createdAt).toLocaleDateString()}
+              </p>
+            </header>
+            <p>{comment.text}</p>
+          </article>
+        ))}
+      </section>
     </main>
   );
 };
