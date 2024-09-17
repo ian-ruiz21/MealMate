@@ -1,17 +1,23 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import * as recipeService from "../../services/recipeService";
+import CommentForm from "../CommentForm/CommentForm";
 
-
-const RecipeDetails = () => {
+const RecipeDetails = (props) => {
   const { recipeId } = useParams();
 
   const [recipe, setRecipe] = useState(null);
+
+  const handleAddComment = async (commentFormData) => {
+    const newComment = await recipeService.createComment(recipeId, commentFormData);
+    setRecipe({ ...recipe, comments: [...recipe.comments, newComment] });
+  };
 
   useEffect(() => {
     const fetchRecipe = async () => {
       const recipeData = await recipeService.show(recipeId);
       setRecipe(recipeData);
+      console.log(recipeData.comments);
     };
     fetchRecipe();
   }, [recipeId]);
@@ -23,7 +29,7 @@ const RecipeDetails = () => {
         <p>{recipe.category?.toUpperCase()}</p>
         <h1>{recipe.title}</h1>
         <p>
-          {recipe.author.username} posted on{" "}
+          {recipe.author.name} posted on{" "}
           {new Date(recipe.createdAt).toLocaleDateString()}
         </p>
       </header>
@@ -50,16 +56,23 @@ const RecipeDetails = () => {
           <img src={recipe.photo} alt={`${recipe.title} photo`} />
         </section>
       )}
+      {recipe.author._id === props.user._id && (
+        <>
+          <Link to={`/recipes/${recipe._id}/edit`}>Edit Recipe</Link>
+
+          <button onClick={() => props.handleDeleteRecipe(recipeId)}>Delete Recipe</button>
+        </>
+      )}
       <section>
         <h2>Comments</h2>
-
+        <CommentForm handleAddComment={handleAddComment} />
         {!recipe.comments.length && <p>There are no comments.</p>}
 
         {recipe.comments.map((comment) => (
           <article key={comment._id}>
             <header>
               <p>
-                {  } posted on &nbsp;
+                {comment.author.name} posted on &nbsp;
                 {new Date(comment.createdAt).toLocaleDateString()}
               </p>
             </header>

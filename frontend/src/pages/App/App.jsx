@@ -24,6 +24,20 @@ function App() {
     navigate("/recipes");
   };
 
+  const handleDeleteRecipe = async (recipeId) => {
+    const deletedRecipe = await recipeService.deleteRecipe(recipeId);
+    setRecipes(recipes.filter((recipe) => recipe._id !== deletedRecipe._id));
+    navigate("/recipes");
+  };
+
+  const handleUpdateRecipe = async (recipeId, recipeFormData) => {
+    const updatedRecipe = await recipeService.update(recipeId, recipeFormData);
+
+    setRecipes(recipes.map((recipe) => (recipe._id === updatedRecipe._id ? updatedRecipe : recipe)));
+
+    navigate(`/recipes/${recipeId}`);
+  }
+
   useEffect(() => {
     const fetchAllRecipes = async () => {
       const recipesData = await recipeService.index();
@@ -40,11 +54,20 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/recipes" element={<RecipeList recipes={recipes} />} />
-            <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
+            <Route
+              path="/recipes/:recipeId"
+              element={
+                <RecipeDetails
+                  user={user}
+                  handleDeleteRecipe={handleDeleteRecipe}
+                />
+              }
+            />
             <Route
               path="/recipes/new"
               element={<NewRecipePage handleAddRecipe={handleAddRecipe} />}
             />
+            <Route path="/recipes/:recipeId/edit" element={<NewRecipePage handleUpdateRecipe={handleUpdateRecipe}/>} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         ) : (
