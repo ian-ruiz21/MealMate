@@ -21,8 +21,8 @@ export default function NavBar({ user, setUser }) {
           <Link to="" onClick={handleLogOut}>
             Log Out
           </Link>
-          &nbsp;&nbsp;
-          <span>Welcome, {user.name}</span>
+          &nbsp; | &nbsp;
+          <Link to="/my-recipes">{user.name}</Link>
         </>
       ) : (
         <>

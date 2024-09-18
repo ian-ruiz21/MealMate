@@ -43,6 +43,16 @@ router.get("/:recipeId", async (req, res) => {
   }
 });
 
+// GET /api/recipes/my-recipes SHOW (USER) FUNCTIONALITY
+router.get("/my-recipes", async (req, res) => {
+  try {
+    const recipes = await Recipe.find({ author: req.user._id });
+    res.status(200).json(recipes);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // PUT /api/recipes/:id UPDATE FUNCTIONALITY
 router.put("/:recipeId", async (req, res) => {
   try {

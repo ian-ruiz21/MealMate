@@ -9,6 +9,7 @@ import RecipeDetails from "../RecipeDetails/RecipeDetails";
 import NewRecipePage from "../NewRecipePage/NewRecipePage";
 import SignUpPage from "../SignUpPage/SignUpPage";
 import LogInPage from "../LogInPage/LogInPage";
+import MyRecipesPage from "../MyRecipesPage/MyRecipesPage";
 import * as recipeService from "../../services/recipeService";
 
 function App() {
@@ -53,23 +54,14 @@ function App() {
         {user ? (
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/my-recipes" element={<MyRecipesPage recipes={recipes} user={user} />} />
             <Route path="/recipes" element={<RecipeList recipes={recipes} />} />
-            <Route
-              path="/recipes/:recipeId"
-              element={
-                <RecipeDetails
-                  user={user}
-                  handleDeleteRecipe={handleDeleteRecipe}
-                />
-              }
-            />
-            <Route
-              path="/recipes/new"
-              element={<NewRecipePage handleAddRecipe={handleAddRecipe} />}
-            />
+            <Route path="/recipes/:recipeId" element={ <RecipeDetails user={user} handleDeleteRecipe={handleDeleteRecipe} /> } />
+            <Route path="/recipes/new" element={<NewRecipePage handleAddRecipe={handleAddRecipe} />} />
             <Route path="/recipes/:recipeId/edit" element={<NewRecipePage handleUpdateRecipe={handleUpdateRecipe}/>} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
+          
         ) : (
           <Routes>
             <Route path="/" element={<HomePage />} />

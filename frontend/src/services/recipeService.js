@@ -10,6 +10,10 @@ export async function show(recipeId) {
   return sendRequest(`${BASE_URL}/${recipeId}`, "GET");
 }
 
+export async function showMyRecipes() {
+  return sendRequest(`${BASE_URL}/my-recipes`, "GET");
+}
+
 export async function create(data) {
   return sendRequest(`${BASE_URL}`, "POST", data);
 }

@@ -9,7 +9,10 @@ const RecipeDetails = (props) => {
   const [recipe, setRecipe] = useState(null);
 
   const handleAddComment = async (commentFormData) => {
-    const newComment = await recipeService.createComment(recipeId, commentFormData);
+    const newComment = await recipeService.createComment(
+      recipeId,
+      commentFormData
+    );
     setRecipe({ ...recipe, comments: [...recipe.comments, newComment] });
   };
 
@@ -60,14 +63,15 @@ const RecipeDetails = (props) => {
         <>
           <Link to={`/recipes/${recipe._id}/edit`}>Edit Recipe</Link>
 
-          <button onClick={() => props.handleDeleteRecipe(recipeId)}>Delete Recipe</button>
+          <button onClick={() => props.handleDeleteRecipe(recipeId)}>
+            Delete Recipe
+          </button>
         </>
       )}
       <section>
         <h2>Comments</h2>
-        <CommentForm handleAddComment={handleAddComment} />
         {!recipe.comments.length && <p>There are no comments.</p>}
-
+      
         {recipe.comments.map((comment) => (
           <article key={comment._id}>
             <header>
@@ -79,7 +83,8 @@ const RecipeDetails = (props) => {
             <p>{comment.text}</p>
           </article>
         ))}
-      </section>
+        <CommentForm handleAddComment={handleAddComment} />
+        </section>
     </main>
   );
 };
