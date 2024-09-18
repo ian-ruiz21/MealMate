@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import styles from "./MyRecipesPage.module.css";
 
 export default function MyRecipesPage(props) {
   const userRecipes = props.recipes.filter(
@@ -6,17 +7,19 @@ export default function MyRecipesPage(props) {
   );
 
   return (
-    <div>
-      <h1>Your Recipes</h1>
-      <ul>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Your Recipes</h1>
+      <ul className={styles.recipeList}>
         {userRecipes.length > 0 ? (
           userRecipes.map((recipe) => (
-            <li key={recipe._id}>
-              <Link to={`/recipes/${recipe._id}`}>{recipe.title}</Link>
+            <li key={recipe._id} className={styles.recipeItem}>
+              <Link to={`/recipes/${recipe._id}`} className={styles.recipeLink}>
+                {recipe.title}
+              </Link>
             </li>
           ))
         ) : (
-          <p>No recipes found.</p>
+          <p className={styles.noRecipes}>No recipes found.</p>
         )}
       </ul>
     </div>
