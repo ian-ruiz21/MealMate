@@ -3,6 +3,12 @@
   justify-content: space-around;
   align-items: center;
   padding: 2vmin;
+  position: sticky; 
+  top: 0; 
+  width: 100%;
+  background-color: #e8b279;
+  z-index: 1000; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .NavBar span {

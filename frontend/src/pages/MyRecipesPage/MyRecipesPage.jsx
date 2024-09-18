@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function PostListPage(props) {
+export default function MyRecipesPage(props) {
   const userRecipes = props.recipes.filter(
     (recipe) => recipe.author._id === props.user._id
   );

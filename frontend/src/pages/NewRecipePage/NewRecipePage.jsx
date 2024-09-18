@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as recipeService from "../../services/recipeService";
-import "./NewRecipePage.css";
+import styles from "./NewRecipePage.module.css"; // Updated to use CSS modules
 
 const NewRecipePage = (props) => {
   const { recipeId } = useParams();
@@ -66,12 +66,13 @@ const NewRecipePage = (props) => {
   };
 
   return (
-    <main>
-      <form onSubmit={handleSubmit}>
-        <h1>{recipeId ? "Edit Recipe" : "New Recipe"}</h1>
+    <main className={styles.main}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h1 className={styles.heading}>{recipeId ? "Edit Recipe" : "New Recipe"}</h1>
         
-        <label htmlFor="title-input">Title</label>
+        <label className={styles.label} htmlFor="title-input">Title</label>
         <input
+          className={styles.input}
           required
           type="text"
           name="title"
@@ -80,53 +81,56 @@ const NewRecipePage = (props) => {
           onChange={handleChange}
         />
         
-        <label htmlFor="description-input">Description</label>
+        <label className={styles.label} htmlFor="description-input">Description</label>
         <textarea
+          className={styles.textarea}
           required
-          type="text"
           name="description"
           id="description-input"
           value={formData.description}
           onChange={handleChange}
         />
 
-        <label>Ingredients</label>
+        <label className={styles.label}>Ingredients</label>
         {formData.ingredients.map((ingredient, index) => (
-          <div key={index}>
+          <div key={index} className={styles.inputContainer}>
             <input
+              className={styles.input}
               type="text"
               value={ingredient}
               onChange={(e) => handleIngredientChange(index, e.target.value)}
               required
             />
-            <button type="button" onClick={() => removeIngredient(index)}>
+            <button className={styles.removeButton} type="button" onClick={() => removeIngredient(index)}>
               Remove
             </button>
           </div>
         ))}
-        <button type="button" onClick={addIngredient}>
+        <button className={styles.addButton} type="button" onClick={addIngredient}>
           Add Ingredient
         </button>
 
-        <label>Instructions</label>
+        <label className={styles.label}>Instructions</label>
         {formData.instructions.map((instruction, index) => (
-          <div key={index}>
+          <div key={index} className={styles.inputContainer}>
             <input
+              className={styles.input}
               value={instruction}
               onChange={(e) => handleInstructionChange(index, e.target.value)}
               required
             />
-            <button type="button" onClick={() => removeInstruction(index)}>
+            <button className={styles.removeButton} type="button" onClick={() => removeInstruction(index)}>
               Remove
             </button>
           </div>
         ))}
-        <button type="button" onClick={addInstruction}>
+        <button className={styles.addButton} type="button" onClick={addInstruction}>
           Add Instruction
         </button>
 
-        <label htmlFor="photo-input">Photo URL (optional)</label>
+        <label className={styles.label} htmlFor="photo-input">Photo URL (optional)</label>
         <input
+          className={styles.input}
           type="text"
           name="photo"
           id="photo-input"
@@ -134,7 +138,7 @@ const NewRecipePage = (props) => {
           onChange={handleChange}
         />
 
-        <button type="submit">SUBMIT</button>
+        <button className={styles.submitButton} type="submit">SUBMIT</button>
       </form>
     </main>
   );

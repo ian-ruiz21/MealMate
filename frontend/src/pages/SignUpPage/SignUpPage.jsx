@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as authService from '../../services/authService';
+import styles from './SignUpPage.module.css'; // Updated to module.css for CSS module support
 
 export default function SignUpPage({ setUser }) {
   const [formData, setFormData] = useState({
@@ -16,7 +17,6 @@ export default function SignUpPage({ setUser }) {
       const user = await authService.signUp(formData);
       setUser(user);
     } catch (err) {
-      // An error occurred
       console.log(err);
       setErrorMsg('Sign Up Failed - Try Again');
     }
@@ -30,46 +30,54 @@ export default function SignUpPage({ setUser }) {
   const disable = formData.password !== formData.confirm;
 
   return (
-    <>
-      <h2>Sign Up!</h2>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <label>Name</label>
+    <div className={styles.signUpContainer}>
+      <h2 className={styles.heading}>Sign Up!</h2>
+      <form autoComplete="off" onSubmit={handleSubmit} className={styles.signUpForm}>
+        <label htmlFor="name-input">Name</label>
         <input
           type="text"
           name="name"
+          id="name-input"
           value={formData.name}
           onChange={handleChange}
           required
+          className={styles.formInput}
         />
-        <label>Email</label>
+        <label htmlFor="email-input">Email</label>
         <input
           type="email"
           name="email"
+          id="email-input"
           value={formData.email}
           onChange={handleChange}
           required
+          className={styles.formInput}
         />
-        <label>Password</label>
+        <label htmlFor="password-input">Password</label>
         <input
           type="password"
           name="password"
+          id="password-input"
           value={formData.password}
           onChange={handleChange}
           required
+          className={styles.formInput}
         />
-        <label>Confirm</label>
+        <label htmlFor="confirm-input">Confirm</label>
         <input
           type="password"
           name="confirm"
+          id="confirm-input"
           value={formData.confirm}
           onChange={handleChange}
           required
+          className={styles.formInput}
         />
-        <button type="submit" disabled={disable}>
+        <button type="submit" disabled={disable} className={styles.submitButton}>
           SIGN UP
         </button>
       </form>
-      <p className="error-message">&nbsp;{errorMsg}</p>
-    </>
+      {errorMsg && <p className={styles.errorMessage}>{errorMsg}</p>}
+    </div>
   );
 }
