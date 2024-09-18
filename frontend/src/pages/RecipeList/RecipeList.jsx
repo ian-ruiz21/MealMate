@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import "./RecipeList.css";
 
 export default function RecipeList (props) {
     return (
-        <div>
-        <h1>Recipes</h1>
+        <div className="recipe-list-container">
+        <h1>All Recipes</h1>
         <ul>
             {props.recipes.map((recipe) => (
             <li key={recipe._id}>

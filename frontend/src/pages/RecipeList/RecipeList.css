@@ -1,0 +1,52 @@
+/* Container for the recipe list */
+.recipe-list-container {
+    max-width: 800px;
+    padding: 20px;
+    margin: 50px auto;
+    background-color: #fdf6e3; /* Light background for container */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Recipe List Title */
+  .recipe-list-container h1 {
+    font-size: 2.5rem;
+    color: #3d5a80; /* Dark header text */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #909c98; /* Light border */
+    padding-bottom: 10px;
+  }
+  
+  /* List of Recipes */
+  .recipe-list-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .recipe-list-container li {
+    margin: 15px 0;
+  }
+  
+  .recipe-list-container a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #3d5a80; /* Dark link text */
+    transition: color 0.3s ease;
+  }
+  
+  .recipe-list-container a:hover {
+    color: #6b705c; /* Hover color */
+  }
+  
+  /* Recipe List Hover Effect */
+  .recipe-list-container li {
+    padding: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .recipe-list-container li:hover {
+    background-color: #e9e3d9; /* Light hover effect */
+    border-radius: 5px;
+  }

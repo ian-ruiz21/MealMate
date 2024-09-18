@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as recipeService from "../../services/recipeService";
+import "./NewRecipePage.css";
 
 const NewRecipePage = (props) => {
   const { recipeId } = useParams();
