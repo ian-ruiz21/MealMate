@@ -9,7 +9,14 @@ export default function RecipeList(props) {
                 {props.recipes.map((recipe) => (
                     <li key={recipe._id} className={styles.recipeItem}>
                         <Link className={styles.recipeLink} to={`/recipes/${recipe._id}`}>
-                            {recipe.title}
+                            {recipe.photo && (
+                                <img
+                                    src={recipe.photo}
+                                    alt={`${recipe.title}`}
+                                    className={styles.recipeImage}
+                                />
+                            )}
+                            <div className={styles.recipeTitle}>{recipe.title}</div>
                         </Link>
                     </li>
                 ))}

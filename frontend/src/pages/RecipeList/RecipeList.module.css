@@ -1,47 +1,39 @@
-
 .recipeListContainer {
   padding: 20px;
-  background-color: #fdf6e3; 
-  color: #3d5a80; 
 }
 
 .heading {
-  font-size: 2.5em;
+  font-size: 2rem;
   margin-bottom: 20px;
-  color: #3d5a80;
-  text-align: center;
 }
 
 .recipeList {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .recipeItem {
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 10px;
-  background-color: #ffffff;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.recipeItem:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .recipeLink {
   text-decoration: none;
-  color: #3d5a80;
-  font-size: 1.2em;
-  transition: color 0.3s ease, text-decoration 0.3s ease;
+  color: inherit;
+  display: flex;
+  align-items: center;
 }
 
-.recipeLink:hover {
-  color: #2c3e50;
-  text-decoration: underline;
+.recipeImage {
+  width: 100px; 
+  height: 100px;
+  object-fit: cover; 
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.recipeTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
 }

@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import * as recipeService from "../../services/recipeService";
-import styles from "./NewRecipePage.module.css"; // Updated to use CSS modules
+import styles from "./NewRecipePage.module.css"; 
 
 const NewRecipePage = (props) => {
   const { recipeId } = useParams();
+  const ingredientInputRef = useRef(null);
+  const instructionInputRef = useRef(null);
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -40,6 +42,9 @@ const NewRecipePage = (props) => {
 
   const addIngredient = () => {
     setFormData({ ...formData, ingredients: [...formData.ingredients, ""] });
+    setTimeout(() => {
+      ingredientInputRef.current?.focus();
+    }, 0); 
   };
 
   const removeIngredient = (index) => {
@@ -49,11 +54,30 @@ const NewRecipePage = (props) => {
 
   const addInstruction = () => {
     setFormData({ ...formData, instructions: [...formData.instructions, ""] });
+    setTimeout(() => {
+      instructionInputRef.current?.focus();
+    }, 0);
   };
 
   const removeInstruction = (index) => {
     const newInstructions = formData.instructions.filter((_, i) => i !== index);
     setFormData({ ...formData, instructions: newInstructions });
+  };
+
+  
+  const handleIngredientKeyDown = (e, index) => {
+    if (e.key === 'Tab' && index === formData.ingredients.length - 1) {
+      e.preventDefault(); 
+      addIngredient();
+    }
+  };
+
+  
+  const handleInstructionKeyDown = (e, index) => {
+    if (e.key === 'Tab' && index === formData.instructions.length - 1) {
+      e.preventDefault(); 
+      addInstruction();
+    }
   };
 
   const handleSubmit = (evt) => {
@@ -69,7 +93,7 @@ const NewRecipePage = (props) => {
     <main className={styles.main}>
       <form className={styles.form} onSubmit={handleSubmit}>
         <h1 className={styles.heading}>{recipeId ? "Edit Recipe" : "New Recipe"}</h1>
-        
+
         <label className={styles.label} htmlFor="title-input">Title</label>
         <input
           className={styles.input}
@@ -80,7 +104,7 @@ const NewRecipePage = (props) => {
           value={formData.title}
           onChange={handleChange}
         />
-        
+
         <label className={styles.label} htmlFor="description-input">Description</label>
         <textarea
           className={styles.textarea}
@@ -96,17 +120,27 @@ const NewRecipePage = (props) => {
           <div key={index} className={styles.inputContainer}>
             <input
               className={styles.input}
+              ref={index === formData.ingredients.length - 1 ? ingredientInputRef : null}
               type="text"
               value={ingredient}
               onChange={(e) => handleIngredientChange(index, e.target.value)}
+              onKeyDown={(e) => handleIngredientKeyDown(e, index)}
               required
             />
-            <button className={styles.removeButton} type="button" onClick={() => removeIngredient(index)}>
+            <button
+              className={styles.removeButton}
+              type="button"
+              onClick={() => removeIngredient(index)}
+            >
               Remove
             </button>
           </div>
         ))}
-        <button className={styles.addButton} type="button" onClick={addIngredient}>
+        <button
+          className={styles.addButton}
+          type="button"
+          onClick={addIngredient}
+        >
           Add Ingredient
         </button>
 
@@ -115,16 +149,26 @@ const NewRecipePage = (props) => {
           <div key={index} className={styles.inputContainer}>
             <input
               className={styles.input}
+              ref={index === formData.instructions.length - 1 ? instructionInputRef : null}
               value={instruction}
               onChange={(e) => handleInstructionChange(index, e.target.value)}
+              onKeyDown={(e) => handleInstructionKeyDown(e, index)}
               required
             />
-            <button className={styles.removeButton} type="button" onClick={() => removeInstruction(index)}>
+            <button
+              className={styles.removeButton}
+              type="button"
+              onClick={() => removeInstruction(index)}
+            >
               Remove
             </button>
           </div>
         ))}
-        <button className={styles.addButton} type="button" onClick={addInstruction}>
+        <button
+          className={styles.addButton}
+          type="button"
+          onClick={addInstruction}
+        >
           Add Instruction
         </button>
 
