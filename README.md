@@ -10,7 +10,7 @@ The idea for this app stemmed from my passion for cooking and the desire to crea
 
 ## Screenshot
 
-![All Recipes Page](/frontend/public/images/LandingPage.PNG)
+![Landing Page](./frontend/public/images/LandingPage.PNG)
 
 *Here is a screenshot of the application's landing page.*
 
@@ -31,35 +31,31 @@ Here's how you can use and explore the app:
 ## Attributions
 
 - Font - [Raleway Regular](https://fonts.google.com/specimen/Raleway)
-- Favicon - [Favicon Generator](https://www.favicon-generator.org/)
 
 ---
 
 ## Technologies Used
 
 - **Frontend**: 
-  - HTML5 
-  - CSS3
-  - JavaScript 
-  - React.js
+  - ![HTML5](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white) 
+  - ![CSS3](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
+  - ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) 
+  - ![React.js](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 - **Backend**: 
-  - Node.js 
-  - Express.js
+  - ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+  - ![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
 - **Database**: 
-  - MongoDB 
+  - ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) 
   - Mongoose
-- **Styling**: 
-  - Flexbox 
-  - Grid Layout 
-  - Custom CSS
 - **Version Control**: 
-  - Git 
-  - GitHub
+  - ![ Git ](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
+  - ![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 - **Development Tools**: 
-  - Visual Studio Code
+  - ![Visual Studio Code](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
   - Lucid Chart
-  - Canva
-  - Trello
+  - ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?&style=for-the-badge&logo=Canva&logoColor=white)
+  - ![Trello](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white)
+  - ![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white) 
 
 ---
 

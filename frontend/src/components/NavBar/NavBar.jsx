@@ -3,6 +3,7 @@ import * as authService from '../../services/authService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
@@ -47,9 +48,15 @@ export default function NavBar({ user, setUser }) {
         </>
       ) : (
         <>
-          <Link to="/login">Log In</Link>
+          <Link to="/login">
+          <FontAwesomeIcon icon={faSignOutAlt} /> &nbsp;
+          Log In
+          </Link>
           &nbsp; | &nbsp;
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/signup">
+          <FontAwesomeIcon icon={faUserPlus} /> &nbsp;
+          Sign Up
+          </Link>
         </>
       )}
     </nav>
