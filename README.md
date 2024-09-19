@@ -70,6 +70,6 @@ Here are some planned features for future versions of the app:
     - Allow users to favorite and bookmark recipes for later use.
 2. **Meal Planning Tool**:
     - Create a feature where users can add recipes to a weekly meal planner.
-3. **Meal Planning Tool**:
-    - Create a feature where users can add recipes to a weekly meal planner.
+3. **Recipe Tags & Categories**:
+    - Let users add and filter by recipe tags (e.g., "quick meals," "breakfast," "holiday dishes").
 
