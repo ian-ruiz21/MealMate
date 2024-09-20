@@ -4,7 +4,7 @@
 
 ### Background Information
 
-The idea for this app stemmed from my passion for cooking and the desire to create a platform where people can share recipes and find culinary inspiration. **MealMate** aims to foster a community of home cooks, chefs, and foodies who want to share their love for food and explore new dishes.
+The idea for this app stemmed from my desire to create a space where I could store my mom's recipes and easily add any new ones I come across. MealMate is designed to help preserve family recipes and allow users to save, modify, and explore new dishes in one convenient place.
 
 ---
 
